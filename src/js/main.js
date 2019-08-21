@@ -1,22 +1,31 @@
-"use strict";
+const addBtn = document.querySelector('.add-js');
+const removeBtn = document.querySelector('.remove-js');
+const glasHolder = document.querySelector('.counter');
+let counter;
+//
+const key = new Date().toISOString().slice(0, 10);
+//localStorage.setItem(key, counter);
 
-// service worker registration - remove if you're not going to use it
-
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('serviceworker.js').then(function(registration) {
-      // Registration was successful
-      console.log('ServiceWorker registration successful with scope: ', registration.scope);
-    }, function(err) {
-      // registration failed :(
-      console.log('ServiceWorker registration failed: ', err);
-    });
-  });
+if (!localStorage.getItem(key)) {
+   localStorage.setItem(key, 0);
+   counter = 0;
+} else {
+   counter = parseInt(localStorage.getItem(key));
 }
+glasHolder.innerHTML = counter;
+addBtn.addEventListener('click', function() {
+   counter = parseInt(localStorage.getItem(key));
+   counter += 1;
+   glasHolder.innerHTML = counter;
+   localStorage.setItem(key, counter);
+});
 
-// place your code below
-
-
-console.log(`Hello world!`);
-
-
+removeBtn.addEventListener('click', function() {
+   counter = parseInt(localStorage.getItem(key));
+   counter -= 1;
+   if (counter <= 0) {
+      counter = 0;
+   }
+   glasHolder.innerHTML = counter;
+   localStorage.setItem(key, counter);
+});
