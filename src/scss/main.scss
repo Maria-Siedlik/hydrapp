@@ -30,7 +30,7 @@ body {
       .glas-middle {
          position: absolute;
          top: 0px;
-         border: 1px solid red;
+
          left: 0px;
       }
       .glas-middle {
@@ -42,15 +42,13 @@ body {
          bottom: 0px;
          left: 0px;
          right: 0px;
-         border: 1px solid green;
+
          display: flex;
          align-items: center;
          justify-content: center;
-         p {
-            font-size: 112px;
-            color: #000;
-            font-weight: 800;
-         }
+         font-size: 112px;
+         color: #000;
+         font-weight: 800;
       }
    }
    button {
